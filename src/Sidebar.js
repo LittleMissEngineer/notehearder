@@ -1,4 +1,5 @@
 import React from 'react'
+import {StyleSheet , css} from 'aphrodite'
 
 import quill from './quill.svg'
 import newIcon from './new.png'
@@ -6,48 +7,45 @@ import newHover from './new-hover.png'
 
 const Sidebar = () => {
   return (
-    <div
-      className="Sidebar"
-      style={styles.sidebar}
-    >
+      <nav className = {css(styles.sidebar)}>
       <div
-        className="logo"
-        style={styles.logo}
+        className={(styles.logo)}
       >
         <img
           src={quill}
           alt="Noteherder"
-          style={styles.logoImg}
+          className={css(styles.logoImg)}
         />
       </div>
 
 
-      <a href="/notes">
+      <a href="/notes"
+      className = {css(styles.newNote)}
+      >
         <img
           src={newHover}
           alt="New note"
-          style={styles.newNote}
+          className={css(styles.newNoteImg)}
         />
         <img
           src={newIcon}
           alt="New note"
-          style={styles.noteImg}
+          className={css(styles.newNoteImg , styles.newNoteHover)}
         />
       </a>
 
-      <div className="SignOut"
-       style={styles.signOut}
-      > <button>
-          <i className="fa fa-sign-out"
-          style={styles.signOutButton}
+      <div className={css(styles.signOut)}
+      > <button className={css(styles.button)} >
+          <i className= {`fa fa-sign-out ${css(styles.buttonIcon)}`}
           ></i>
         </button>
       </div>
-    </div>
+      </nav>
   )
-}
+    }
 
-const styles = {
+
+const styles = StyleSheet.create ({
   sidebar: {
     width: '6rem',
     backgroundColor: '#f3f3f3',
@@ -57,6 +55,7 @@ const styles = {
     alignItems: 'center',
   },
   logo: {
+
     fontFamily: '"Fauna One"',
     color: '#666',
     fontSize: '3rem',
@@ -65,28 +64,45 @@ const styles = {
     width: '3rem',
     paddingLeft: '0.4rem',
   },
+  newNote: {
+    position: 'relative',
+    backgroundColor: 'ffffff',
+    border: '#8A2BE2',
+    marginTop: '2rem',
+    width: '4rem',
+    },
+    
+    newNoteImg: {
+    position: 'absolute',
+    border: '#8A2BE2',
+    width: '100%',
+    transition: 'opacity 0.25s ease-in-out',
+    },
+
+    newNoteImgHover: {
+        ':hover' : {
+            opacity: 0,
+        },
+    },
   signOut: {
 backgroundColor: '#f3f3f3',
-position: 'relative',
+position: 'absolute',
   top: '400px',
   left: '0px',
 },
 
-signOutButton:{
-color: '#008bf8',
+buttonIcon:{
 fontSize: '1.5rem',
 },
 
-newNotes: {
-backgroundColor: 'ffffff',
-border: '#8A2BE2',
+button:{
+    color: '#008bf8',
+    background: 'transparent',
+    outline: 'none',
+
+
 },
+})
 
-noteImg: {
-border: '#8A2BE2',
-
-}
-
-}
 
 export default Sidebar
