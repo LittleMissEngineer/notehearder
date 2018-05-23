@@ -5,7 +5,7 @@ import quill from './quill.svg'
 import newIcon from './new.png'
 import newHover from './new-hover.png'
 
-const Sidebar = () => {
+const Sidebar = ({resetCurrentNote}) => {
   return (
       <nav className = {css(styles.sidebar)}>
       <div
@@ -21,6 +21,10 @@ const Sidebar = () => {
 
       <a href="/notes"
       className = {css(styles.newNote)}
+      onClick={(ev) => {
+        ev.preventDefault()
+        resetCurrentNote()
+      }}
       >
         <img
           src={newHover}
@@ -36,7 +40,7 @@ const Sidebar = () => {
 
       <div className={css(styles.signOut)}
       > <button className={css(styles.button)} >
-          <i className= {`fa fa-sign-out ${css(styles.buttonIcon)}`}
+          <i className= {`fa fa-sign-out-alt ${css(styles.buttonIcon)}`}
           ></i>
         </button>
       </div>
@@ -86,22 +90,22 @@ const styles = StyleSheet.create ({
     },
   signOut: {
 position: 'absolute',
-  top: '400px',
-  left: '0px',
+  // top: '400px',
+  // left: '0px',
+  bottom: '1rem',
+},
+button:{
+  backgroundColor: 'transparent',
+  border: '0',
+    color: '#008bf8',
+    cursor: 'pointer',
+    outline: 'none',
+
 },
 
 buttonIcon:{
-fontSize: '1.5rem',
-},
-
-button:{
-    color: '#008bf8',
-    background: 'transparent',
-    outline: 'none',
-    cursor: 'pointer',
-
-
-},
+  fontSize: '2rem',
+  },
 })
 
 
