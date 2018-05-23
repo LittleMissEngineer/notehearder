@@ -85,7 +85,6 @@ const styles = StyleSheet.create ({
         },
     },
   signOut: {
-backgroundColor: '#f3f3f3',
 position: 'absolute',
   top: '400px',
   left: '0px',
@@ -99,6 +98,7 @@ button:{
     color: '#008bf8',
     background: 'transparent',
     outline: 'none',
+    cursor: 'pointer',
 
 
 },
