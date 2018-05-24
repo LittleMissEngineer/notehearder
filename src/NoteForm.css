@@ -18,7 +18,7 @@
     background: none;
     padding: 0;
   }
-  .NoteForm button[type=submit] {
+  .NoteForm [type=submit] {
     background-color: #008bf8;
     border-radius: 4px;
     color: #fff;

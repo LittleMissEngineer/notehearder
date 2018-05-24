@@ -44,6 +44,13 @@ class Main extends React.Component {
         this.setState({ notes })
         this.setCurrentNote(note)
       }
+       
+    delNote = (note) => {
+      return {
+       title: ' ',
+         body: ' ',
+    }
+    }
     
       render() {
         return (
@@ -56,6 +63,7 @@ class Main extends React.Component {
             <NoteForm
               currentNote={this.state.currentNote}
               saveNote={this.saveNote}
+              delNote ={this.delNote}
             />
           </div>
         )

@@ -13,7 +13,13 @@ return (
 <div className = "NoteForm">
 <div className="form-actions">
         <button type="button">
-          <i className="far fa-trash-alt"></i>
+          <i className="far fa-trash-alt"
+          onClick={(ev) => {
+            ev.preventDefault()
+            currentNote()
+          }}
+
+          ></i>   
         </button>
 </div>
 <form>
