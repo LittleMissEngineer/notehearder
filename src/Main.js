@@ -19,7 +19,15 @@ class Main extends React.Component {
           body: '',
         }
       }
-    
+
+      delNote = (note) => {
+        return {
+         title: ' ',
+           body: ' ',
+      }
+      }
+
+
       setCurrentNote = (note) => {
         this.setState({ currentNote: note })
       }
@@ -45,12 +53,6 @@ class Main extends React.Component {
         this.setCurrentNote(note)
       }
        
-    delNote = (note) => {
-      return {
-       title: ' ',
-         body: ' ',
-    }
-    }
     
       render() {
         return (

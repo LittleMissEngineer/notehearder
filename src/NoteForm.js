@@ -2,6 +2,7 @@ import React from 'react'
 
 import './NoteForm.css'
 
+
 const NoteForm = ({currentNote, saveNote}) => {
 const handleChanges = (ev) => {
   const note = {...currentNote}
@@ -12,12 +13,13 @@ const handleChanges = (ev) => {
 return (
 <div className = "NoteForm">
 <div className="form-actions">
-        <button type="button">
-          <i className="far fa-trash-alt"
-          onClick={(ev) => {
+        <button type="button" onClick={(ev) => {
             ev.preventDefault()
-            currentNote()
-          }}
+            console.log('click , click')
+          }
+          
+          } >
+          <i className="far fa-trash-alt"
 
           ></i>   
         </button>
