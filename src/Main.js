@@ -34,7 +34,6 @@ class Main extends React.Component {
       //         notes
       //   })
       
-      // }
 
 
       setCurrentNote = (note) => {
