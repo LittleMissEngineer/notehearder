@@ -9,23 +9,23 @@ const handleChanges = (ev) => {
   note[ev.target.name] = ev.target.value
   saveNote(note)
 
-  const notes = {...currentNote}
-  notes[ev.target.name - 1] = ev.target.value 
- delNote(notes)
+//   const notes = {...currentNote}
+//   notes[ev.target.name - 1] = ev.target.value 
+//  delNote(notes)
 
 }
 
 return (
 <div className = "NoteForm">
 <div className="form-actions">
-        <button type="button" onClick={(ev) => {
+        <button type="button" onClick={delNote}
           
-            ev.preventDefault()
-            console.log('click , click')
+    
+            // console.log('click , click')
         
-          }
           
-          } >
+          
+          >
           <i className="far fa-trash-alt"
 
           ></i>   

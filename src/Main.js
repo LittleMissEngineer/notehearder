@@ -20,14 +20,14 @@ class Main extends React.Component {
         }
       }
 
-      delNote = (note) => {
-        const notes= this.state.note
-        notes.splice(note.target.name , 1)
-        this.setCurrentNote({
-              notes
-        })
+      // delNote = (note) => {
+      //   const notes= this.state.note
+      //   notes.splice(note.target.name , 1)
+      //   this.setCurrentNote({
+      //         notes
+      //   })
       
-      }
+      // }
 
 
       setCurrentNote = (note) => {
@@ -56,9 +56,14 @@ class Main extends React.Component {
       }
 
       delNote = (note) => {
-        const notes = [this.state.notes]
-        const i = notes.findIndex(currentNote => currentNote.id === note.id)
-          notes[i] = []
+        const notes = [...this.state.notes]
+        
+        const i = notes.findIndex(note => note.id === this.state.currentNote.id)
+          if(i > -1){
+            notes.splice(i,1)
+            this.setState({notes})
+          }
+          this.resetCurrentNote()
       }
        
     
