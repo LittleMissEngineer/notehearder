@@ -11,6 +11,7 @@ const Note = (props) => {
           { props.note.title }
         </div>
         <div className="note-body">
+        <h1>test</h1>
           <p>
             { props.note.body }
           </p>
