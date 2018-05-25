@@ -16,7 +16,7 @@ return (
           <span className="title">Noteherder</span>
         </header>
         <main>
-          <h3>Hey, Nerd! You Like Notes?</h3>
+          <h3>Get in, loser. We're taking notes.</h3>
           <p>You never know when you'll need to write crap down. In fact, you should probably be taking notes right now.</p>
           <button className="github"
           onClick ={() => authenticate(githubProvider)}
