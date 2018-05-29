@@ -2,8 +2,7 @@ import React from  'react'
 
 import './SignIn.css'
 import googleLogo from './google.svg'
-import {auth, githubProvider} from './base'
-import {googleProvider} from './base'
+import {auth, googleProvider, githubProvider} from './base'
 
 const SignIn = () => {
 

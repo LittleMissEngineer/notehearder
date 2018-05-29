@@ -13,12 +13,12 @@ class Main extends React.Component {
         notes: [],
       }
     }
-    componentDidMount(){
+    componentWillMount(){
       // const notes = JSON.parse(window.localStorage.getItem('notes'))
       // if(notes){
       //   this.setState({notes})
 
-      base.syncState('notes' , {     
+      base.syncState(`${this.props.uid}` , {     
         context: this,
         state: 'notes' ,
         asArray: true, 
