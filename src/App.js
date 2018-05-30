@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Route, Switch } from 'react-router-dom'
 
 
 import './App.css'
@@ -13,6 +14,10 @@ class App extends Component {
   }
 
 componentDidMount(){
+  const uid = localStorage.getItem('uid')
+  if (uid) {
+    this.setState({ uid })
+  }
 auth.onAuthStateChanged(user => {
   if(user){
     this.handleAuth(user)
@@ -26,6 +31,7 @@ auth.onAuthStateChanged(user => {
 
   handleAuth = (user) => {
     this.setState({uid:user.uid})
+    localStorage.setItem('uid', user.uid)
   }
 
 signedIn = () => {
@@ -35,6 +41,7 @@ return this.state.uid
 
 signOut = () => {
   this.setState ({uid:null})
+  localStorage.removeItem('uid')
   auth.signOut()
 }
 
@@ -42,12 +49,10 @@ signOut = () => {
   render() {
     return (
       <div className="App">
-      {
-        this.signedIn()
-         ? <Main signOut = {this.signOut} uid={this.state.uid}/> 
-         : <SignIn handleAuth = {this.handleAuth}/>
-      }
-       
+       <Switch>
+          <Route path="/sign-in" component={SignIn} />
+          <Route path="/notes" render={() => <Main signOut={this.signOut} uid={this.state.uid} /> } />
+        </Switch>
       </div>
     )
   }
