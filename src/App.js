@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 
 import './App.css'
@@ -50,8 +50,22 @@ signOut = () => {
     return (
       <div className="App">
        <Switch>
-          <Route path="/sign-in" component={SignIn} />
-          <Route path="/notes" render={() => <Main signOut={this.signOut} uid={this.state.uid} /> } />
+          <Route
+            path="/sign-in"
+            render={() => (
+              this.signedIn()
+                ? <Redirect to="/notes" />
+                : <SignIn />
+            )}
+          />
+          <Route
+            path="/notes"
+            render={() => (
+              this.signedIn()
+               ? <Main signOut={this.signOut} uid={this.state.uid} />
+               : <Redirect to="/sign-in" />
+            )}
+          />
         </Switch>
       </div>
     )
