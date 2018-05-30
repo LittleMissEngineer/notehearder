@@ -1,23 +1,24 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-const Note = (props) => {
+
+const Note = ({note}) => {
   return (
-    <li
-      className="Note"
-      onClick={() => props.setCurrentNote(props.note)}
-    >
+    <NavLink to={`/notes/${note.id}`}>
+    <li className="Note">
       <div className="note">
         <div className="note-title">
-          { props.note.title }
+          { note.title }
         </div>
         <div className="note-body">
           <p>
-            { props.note.body }
+            { note.body }
           </p>
         </div>
       </div>
     </li>
-  )
-}
+  </NavLink>
+)
+}   
 
 export default Note

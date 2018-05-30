@@ -116,14 +116,7 @@ class Main extends React.Component {
               />
             )}
           />
-          <Route
-            render={navProps => (
-              <NoteForm
-                {...formProps}
-                {...navProps}
-              />
-            )}
-          />
+    
         </Switch>
           </div>
         )
