@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
-
 import './App.css'
 import {auth} from './base'
 import Main from "./Main"
@@ -66,6 +65,16 @@ signOut = () => {
                : <Redirect to="/sign-in" />
             )}
           />
+<Route
+            render={() => (
+              this.signedIn()
+                ? <Redirect to="/notes" />
+                : <Redirect to="/sign-in" />
+            )}
+          />
+
+
+
         </Switch>
       </div>
     )
