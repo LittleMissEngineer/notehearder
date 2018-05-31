@@ -17,7 +17,7 @@ return (
         </header>
         <main>
           <h3>Get in, loser. We're taking notes.</h3>
-          <p>You never know when you'll need to write crap down. In fact, you should probably be taking notes right now.</p>
+          <p>You never know when you'll need to write crap down. In fact, you should probably be taking notes right now. Just like the Mean Girls.</p>
           <button className="github"
           onClick ={() => authenticate(githubProvider)}
           >
