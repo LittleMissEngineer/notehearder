@@ -20,7 +20,7 @@ class Main extends React.Component {
       // if(notes){
       //   this.setState({notes})
 
-      base.syncState(`${this.props.uid}` , {     
+      base.syncState(`notes/${this.props.uid}` , {     
         context: this,
         state: 'notes' ,
         asArray: true, 
@@ -54,12 +54,14 @@ class Main extends React.Component {
       }
     
       saveNote = (note) => {
+        let shouldRedirect = false
         const notes = [...this.state.notes]
     
         if (!note.id) {
           // new note
           note.id = Date.now()
           notes.push(note)
+          shouldRedirect = true
         } else {
           // existing note
           const i = notes.findIndex(currentNote => currentNote.id === note.id)
@@ -67,19 +69,21 @@ class Main extends React.Component {
         }
     
         this.setState({ notes })
-        this.setCurrentNote(note)
+        if (shouldRedirect) {
+          this.props.history.push(`/notes/${note.id}`)
+        }
 
       }
 
-      delNote = (note) => {
+      delNote = (currentNote) => {
         const notes = [...this.state.notes]
         
         const i = notes.findIndex(note => note.id === this.state.currentNote.id)
           if(i > -1){
             notes.splice(i,1)
             this.setState({notes})
+            this.props.history.push('/notes')
           }
-          this.resetCurrentNote()
       }
        
     
@@ -87,28 +91,32 @@ class Main extends React.Component {
         const formProps = {
           currentNote: this.state.currentNote,
           saveNote: this.saveNote,
-          removeCurrentNote: this.removeCurrentNote,
+          delNote: this.delNote,
+     notes:this.state.notes,
         }
     
         return (
           <div className="Main" style={style}>
             <Sidebar 
-            resetCurrentNote={this.resetCurrentNote}
             signOut={this.props.signOut}
             
             />
             <NoteList
               notes={this.state.notes}
-              setCurrentNote={this.setCurrentNote}
+              
             />
-            <NoteForm
-              currentNote={this.state.currentNote}
-              saveNote={this.saveNote}
-              delNote ={this.delNote.bind(this)}
-            />
+           
             <Switch>
           <Route
             path="/notes/:id"
+            render={navProps => (
+              <NoteForm
+                {...formProps}
+                {...navProps}
+              />
+            )}
+          />
+           <Route
             render={navProps => (
               <NoteForm
                 {...formProps}
